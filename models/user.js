@@ -1,13 +1,16 @@
 const mongoose = require('mongoose')
 
 const userSchema = new mongoose.Schema({
-  name:{
-    type:String,
-    require:[true,"請填寫姓名"]
+  name: {
+    type: String,
+    required: [true, '請輸入您的名字']
   },
   email: {
     type: String,
-    require: [true, "請填寫Email"]
+    required: [true, '請輸入您的 Email'],
+    unique: true,
+    lowercase: true,
+    select: false
   },
   photo: {
     type: String
