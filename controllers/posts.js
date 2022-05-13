@@ -7,28 +7,41 @@ const PostModel = require('../models/posts')
 const UserModel = require('../models/user')
 
 const PostsController = {
-  async getAllPosts(req, res) {
-    const getAllPosts = await PostModel.find({}).populate({
+  async getPosts(req, res) {
+    const timeSort = req.query.timeSort == 'asc' ? 'createdAt' :'-createdAt';
+    const q = req.query.q !== undefined ? { "content": new RegExp(req.query.q) } : {};
+    const getPosts = await PostModel.find(q).populate({
       path:"user",
       select: "name photo"
-    })
-    handleSuccess(res, getAllPosts)
+    }).sort(timeSort)
+    handleSuccess(res, getPosts)
   },
   async postPosts(req, res) {
     const body = req.body
     const { content, image, user } = body
-    if (content.trim() !== '') {
-      try {
-        const postPosts = await PostModel.create({
-          content, image, user
-        })
-        handleSuccess(res, postPosts)
-      } catch (err) {
-        handleError(res, err)
+    try{
+      const hasUser = await UserModel.findById(user).exec()
+      if (hasUser !== null) {
+        if (content.trim() !== '') {
+          try {
+            const postPosts = await PostModel.create({
+              content, image, user
+            })
+            handleSuccess(res, postPosts)
+          } catch (err) {
+            handleError(res, err)
+          }
+        } else {
+          handleError(res)
+        }
+      } else {
+        handleError(res)
       }
-    } else {
-      handleError(res)
+    }catch(err){
+      handleError(res, err)
     }
+    
+    
   },
   async updatePosts(req, res) {
     const id = req.params
