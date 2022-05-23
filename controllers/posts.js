@@ -23,14 +23,10 @@ const PostsController = {
       const hasUser = await UserModel.findById(user).exec()
       if (hasUser !== null) {
         if (content.trim() !== '') {
-          try {
-            const postPosts = await PostModel.create({
-              content, image, user
-            })
-            handleSuccess(res, postPosts)
-          } catch (err) {
-            handleError(res, err)
-          }
+          const postPosts = await PostModel.create({
+            content, image, user
+          })
+          handleSuccess(res, postPosts)
         } else {
           handleError(res)
         }
@@ -67,7 +63,11 @@ const PostsController = {
     const id = req.params
     try {
       const deleteOnePosts = await PostModel.deleteOne(id)
-      handleSuccess(res, deleteOnePosts)
+      if (deleteOnePosts !== null){
+        handleSuccess(res, deleteOnePosts)
+      }else{
+        handleError(res)
+      }
     } catch (err) {
       handleError(res, err)
     }
@@ -75,7 +75,11 @@ const PostsController = {
   async deleteAllPosts(req, res) {
     try {
       const deleteAllPosts = await PostModel.deleteMany({})
-      handleSuccess(res, deleteAllPosts)
+      if (deleteAllPosts !== null) {
+        handleSuccess(res, deleteAllPosts)
+      } else {
+        handleError(res)
+      }
     } catch (err) {
       handleError(res, err)
     }
