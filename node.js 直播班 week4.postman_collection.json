@@ -115,7 +115,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://mysterious-hollows-42702.herokuapp.com/users",
+					"raw": "https://mysterious-hollows-42702.herokuapp.com/user",
 					"protocol": "https",
 					"host": [
 						"mysterious-hollows-42702",
