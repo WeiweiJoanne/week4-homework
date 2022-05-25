@@ -1,19 +1,28 @@
 {
-	"variables": [],
 	"info": {
+		"_postman_id": "8f7e0f2c-fc0b-4d19-8508-27c95ead10d2",
 		"name": "node.js 直播班 week4",
-		"_postman_id": "0b296d6c-e671-61b0-1e4e-4ab05b1cbae0",
-		"description": "",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13924975"
 	},
 	"item": [
 		{
 			"name": "GetPosts",
 			"request": {
-				"url": "https://mysterious-hollows-42702.herokuapp.com/posts",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"url": {
+					"raw": "https://mysterious-hollows-42702.herokuapp.com/posts",
+					"protocol": "https",
+					"host": [
+						"mysterious-hollows-42702",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				},
 				"description": "搜尋全部貼文/搜尋相關貼文(依時間先後排序)"
 			},
 			"response": []
@@ -21,30 +30,50 @@
 		{
 			"name": "NewPost",
 			"request": {
-				"url": "https://mysterious-hollows-42702.herokuapp.com/posts",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n \"user\":\"627e6bea13c7a4d484db7bc9\",\n \"content\":\"想去埃及玩\"\n}"
+					"raw": "{\n \"user\":\"627e6bea13c7a4d484db7bcb\",\n \"content\":\"想去埃及玩\"\n}"
 				},
-				"description": ""
+				"url": {
+					"raw": "https://mysterious-hollows-42702.herokuapp.com/posts",
+					"protocol": "https",
+					"host": [
+						"mysterious-hollows-42702",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "DeletePost",
 			"request": {
-				"url": "https://mysterious-hollows-42702.herokuapp.com/posts/62834394aa351ca204701c8f",
 				"method": "DELETE",
 				"header": [],
-				"body": {},
+				"url": {
+					"raw": "https://mysterious-hollows-42702.herokuapp.com/posts/628bae861c0ba31e18edbef5",
+					"protocol": "https",
+					"host": [
+						"mysterious-hollows-42702",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts",
+						"628bae861c0ba31e18edbef5"
+					]
+				},
 				"description": "刪除全部貼文/依網址變數id 刪除該貼文"
 			},
 			"response": []
@@ -52,18 +81,29 @@
 		{
 			"name": "UpdatePost",
 			"request": {
-				"url": "https://mysterious-hollows-42702.herokuapp.com/posts/628bae861c0ba31e18edbef5",
 				"method": "PATCH",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n\t\"content\":\"想去丹麥玩\"\n}"
+				},
+				"url": {
+					"raw": "https://mysterious-hollows-42702.herokuapp.com/posts/627e8b4958857a9fb185c610",
+					"protocol": "https",
+					"host": [
+						"mysterious-hollows-42702",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts",
+						"627e8b4958857a9fb185c610"
+					]
 				},
 				"description": "依照網址變數id更新貼文"
 			},
@@ -72,10 +112,20 @@
 		{
 			"name": "GetUsers",
 			"request": {
-				"url": "https://mysterious-hollows-42702.herokuapp.com/user",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"url": {
+					"raw": "https://mysterious-hollows-42702.herokuapp.com/users",
+					"protocol": "https",
+					"host": [
+						"mysterious-hollows-42702",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users"
+					]
+				},
 				"description": "取Users資料"
 			},
 			"response": []
